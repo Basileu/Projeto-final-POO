@@ -86,9 +86,9 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
         jLabel4.setText("Nome:");
 
-        jBCadastrar.setBackground(new java.awt.Color(255, 255, 204));
+        jBCadastrar.setBackground(new java.awt.Color(153, 153, 255));
         jBCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jBCadastrar.setForeground(new java.awt.Color(255, 255, 0));
+        jBCadastrar.setForeground(new java.awt.Color(0, 51, 153));
         jBCadastrar.setText("Cadastrar");
         jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,8 +96,9 @@ public class Cadastro extends javax.swing.JFrame {
             }
         });
 
-        jBVoltar.setBackground(new java.awt.Color(255, 255, 153));
+        jBVoltar.setBackground(new java.awt.Color(153, 153, 255));
         jBVoltar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jBVoltar.setForeground(new java.awt.Color(0, 51, 153));
         jBVoltar.setText("Voltar");
         jBVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

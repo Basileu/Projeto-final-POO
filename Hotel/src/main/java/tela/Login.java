@@ -67,6 +67,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jTMail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTMail.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.gray, java.awt.Color.gray));
         jTMail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTMailActionPerformed(evt);
@@ -88,6 +89,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jPSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPSenha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.gray, java.awt.Color.gray));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

@@ -83,6 +83,7 @@ public class Reserva extends javax.swing.JFrame {
         });
 
         jTNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTNome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.gray, java.awt.Color.gray));
         jTNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTNomeActionPerformed(evt);
@@ -92,9 +93,9 @@ public class Reserva extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
         jLabel8.setText("Número do quarto:");
 
-        jBVoltar.setBackground(new java.awt.Color(102, 204, 255));
+        jBVoltar.setBackground(new java.awt.Color(153, 153, 255));
         jBVoltar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jBVoltar.setForeground(new java.awt.Color(0, 0, 255));
+        jBVoltar.setForeground(new java.awt.Color(0, 0, 204));
         jBVoltar.setText("Voltar");
         jBVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,10 +109,12 @@ public class Reserva extends javax.swing.JFrame {
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Quarto 100", "Quarto 101", "Quarto 200", "Quarto 201", "Quarto 300" }));
+        jComboBox1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.gray, java.awt.Color.gray));
 
         buttonGroup2.add(jRTipoCartao);
         jRTipoCartao.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jRTipoCartao.setText("Cartão de crédito");
+        jRTipoCartao.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.gray, java.awt.Color.gray));
         jRTipoCartao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jRTipoCartaoMouseClicked(evt);
@@ -141,6 +144,7 @@ public class Reserva extends javax.swing.JFrame {
         jLabel10.setText("CVV");
 
         jTCartao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTCartao.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.gray, java.awt.Color.gray));
         jTCartao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTCartaoActionPerformed(evt);
@@ -148,6 +152,7 @@ public class Reserva extends javax.swing.JFrame {
         });
 
         jTCartao1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTCartao1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.gray, java.awt.Color.gray));
         jTCartao1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTCartao1ActionPerformed(evt);
@@ -167,8 +172,10 @@ public class Reserva extends javax.swing.JFrame {
         jLabel12.setText("Data de entrada");
 
         jSpinner1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jSpinner1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.gray, java.awt.Color.gray));
 
         jSpinner2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jSpinner2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.gray, java.awt.Color.gray));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -239,7 +246,7 @@ public class Reserva extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jTNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))

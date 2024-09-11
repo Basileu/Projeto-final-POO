@@ -17,57 +17,113 @@ import java.util.logging.Logger;
  * @author kamil
  */
 public class Conexao {
-
-    private static final String URL = "jdbc:sqlite:hotel.db";
-
-    public static Connection getConnection() {
-
+    
+        public static Connection getConnection() throws SQLException {
+        Connection conexao = null;
         try {
-            return DriverManager.getConnection(URL);
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conexao = DriverManager.getConnection("jdbc:mysql://127.0.0.1/hotel", "root", "@Kamila19");
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Driver do banco não localizado");
         } catch (SQLException ex) {
-            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Ocorreu um erro ao acessar ao banco: " + ex.getMessage());
         }
-        return null;
+        return conexao;
     }
 
-//  codigo para verificar se esta conectando com o banco 
-public static void main(String[] args) {
-       Connection conn = null;
-       try {
-           // URL de conexão para o banco de dados SQLite
-           String url = "jdbc:sqlite:hotel.db";
-           // Cria a conexão com o banco de dados
-           conn = DriverManager.getConnection(url);
-           System.out.println("Conexão com SQLite estabelecida.");
-       } catch (SQLException e) {
-           System.out.println(e.getMessage());
-       }
-   }
-    public void closeConnection(Connection con) {
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+    public static void closeConnection(Connection con) {
+        if (con != null) {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
-    public void closeConnection(Connection con, PreparedStatement stmt) {
+    public static void closeConnection(Connection con, PreparedStatement stmt) {
         closeConnection(con);
-        try {
-            stmt.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        if (stmt != null) {
+            try {
+                stmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-
     }
 
-    public void closeConnection(Connection con, PreparedStatement stmt, ResultSet rs) {
+    public static void closeConnection(Connection con, PreparedStatement stmt, ResultSet rs) {
         closeConnection(con, stmt);
-        try {
-            rs.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
+    public static void main(String[] args) throws SQLException {
+        Connection conexao = getConnection();
+        if (conexao != null) {
+            System.out.println("Conexão estabelecida com sucesso!");
+            closeConnection(conexao);
+        } else {
+            System.out.println("Falha ao estabelecer conexão.");
+        }
+        
+    }
+//
+//    public static Connection getConnection() throws SQLException {
+//        
+//
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//             Connection conexao = DriverManager.getConnection("jdbc:mysql://127.0.0.1/hotel", "root", "@Kamila19");
+////            ResultSet quarto = conexao.createStatement().executeQuery("SELECT * FROM tb_quartos");
+////            while (quarto.next()) {
+////                System.out.println(quarto.getString("numero_quarto"));
+////
+////            }
+//        } catch (ClassNotFoundException ex) {
+//            System.out.println("Driver do banco não localizado");
+//        } catch (SQLException ex) {
+//            System.out.println("Occoreu um erro ao acessar ao banco: " + ex.getMessage());
+//        } 
+//        
+//        return null;
+//    }
+//
+//    public static void closeConnection(Connection con) {
+//        try {
+//            con.close();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+//
+//    public static void closeConnection(Connection con, PreparedStatement stmt) {
+//        closeConnection(con);
+//        try {
+//            stmt.close();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+//
+//    public static void closeConnection(Connection con, PreparedStatement stmt, ResultSet rs) {
+//        closeConnection(con, stmt);
+//        try {
+//            rs.close();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//    }
+//
+//    
+//    public static void main(String[] args) throws SQLException {
+//           Conexao conexo = new Conexao();
+//           conexo.getConnection();
+//    }
 }

@@ -41,7 +41,6 @@ public class Quartos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbReserva = new javax.swing.JTable();
-        jBVoltar = new javax.swing.JButton();
         jBReservar = new javax.swing.JButton();
         jBCancelar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -77,8 +76,6 @@ public class Quartos extends javax.swing.JFrame {
         tbReserva.setRowHeight(30);
         tbReserva.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbReserva.setShowGrid(true);
-        tbReserva.setShowHorizontalLines(true);
-        tbReserva.setShowVerticalLines(true);
         tbReserva.setSurrendersFocusOnKeystroke(true);
         tbReserva.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -87,16 +84,6 @@ public class Quartos extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbReserva);
         tbReserva.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-
-        jBVoltar.setBackground(new java.awt.Color(255, 153, 153));
-        jBVoltar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jBVoltar.setForeground(new java.awt.Color(153, 0, 0));
-        jBVoltar.setText("Voltar");
-        jBVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBVoltarActionPerformed(evt);
-            }
-        });
 
         jBReservar.setBackground(new java.awt.Color(153, 153, 255));
         jBReservar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -108,9 +95,9 @@ public class Quartos extends javax.swing.JFrame {
             }
         });
 
-        jBCancelar.setBackground(new java.awt.Color(255, 153, 153));
+        jBCancelar.setBackground(new java.awt.Color(153, 153, 255));
         jBCancelar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jBCancelar.setForeground(new java.awt.Color(153, 0, 0));
+        jBCancelar.setForeground(new java.awt.Color(0, 51, 153));
         jBCancelar.setText("Cancelar Reserva");
         jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +121,7 @@ public class Quartos extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(397, 397, 397)
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 393, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -145,13 +132,11 @@ public class Quartos extends javax.swing.JFrame {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(119, 119, 119)
                 .addComponent(jBReservar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 351, Short.MAX_VALUE)
-                .addComponent(jBVoltar)
-                .addGap(50, 50, 50))
+                .addGap(61, 61, 61))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,8 +152,7 @@ public class Quartos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBReservar)
-                    .addComponent(jBCancelar)
-                    .addComponent(jBVoltar))
+                    .addComponent(jBCancelar))
                 .addGap(83, 83, 83))
         );
 
@@ -185,13 +169,6 @@ public class Quartos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVoltarActionPerformed
-        // TODO add your handling code here:
-        dispose();
-        login.setVisible(true);
-
-    }//GEN-LAST:event_jBVoltarActionPerformed
 
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         // TODO add your handling code here:
@@ -272,7 +249,6 @@ public class Quartos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBReservar;
-    private javax.swing.JButton jBVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
