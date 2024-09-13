@@ -75,8 +75,6 @@ public class ReservaDAO {
             stmt.setString(4, r.getFormaPagamento());
             stmt.setString(5, r.getNumeroCartao());
             stmt.setString(5, r.getCvv());
-            stmt.setBoolean(7, r.isStatusConfirmacao());
-            stmt.setInt(8, r.getReservaID());
             stmt.executeUpdate();
 
             System.out.println("Reserva inserida com sucesso!");

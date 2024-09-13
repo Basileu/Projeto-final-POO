@@ -4,7 +4,8 @@
  */
 package DAO;
 
-import classes.Cadastro;
+import classes.Cadastros;
+import classes.Cadastros;
 import conexao.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  */
 public class CadastroDAO {
 
-public ArrayList<Cadastro> lerBanco() throws SQLException {
+public ArrayList<Cadastros> lerBanco() throws SQLException {
         Connection con = Conexao.getConnection();
         if (con == null) {
             System.out.println("Falha ao estabelecer conexão.");
@@ -27,14 +28,14 @@ public ArrayList<Cadastro> lerBanco() throws SQLException {
         }
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        ArrayList<Cadastro> cadastroList = new ArrayList<>();
+        ArrayList<Cadastros> cadastroList = new ArrayList<>();
 
         try {
             stmt = con.prepareStatement("SELECT * FROM tb_cadastro");
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Cadastro cadastro = new Cadastro();
+                Cadastros cadastro = new Cadastros();
                 cadastro.setClienteID(rs.getInt("cliente_id"));
                 cadastro.setNome(rs.getString("nome"));
                 cadastro.setEmail(rs.getString("email"));
@@ -51,7 +52,7 @@ public ArrayList<Cadastro> lerBanco() throws SQLException {
         return cadastroList;
     }
     
-    public void inserirBanco(Cadastro c) throws SQLException {
+    public void inserirBanco(Cadastros c) throws SQLException {
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         try {
@@ -72,7 +73,7 @@ public ArrayList<Cadastro> lerBanco() throws SQLException {
         }
     }
     
-     public void atualizarCadastro(Cadastro c) throws SQLException {
+     public void atualizarCadastro(Cadastros c) throws SQLException {
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         try {
@@ -94,7 +95,7 @@ public ArrayList<Cadastro> lerBanco() throws SQLException {
         }
     }
     
-     public void deletarCadastro(Cadastro c) throws SQLException {
+     public void deletarCadastro(Cadastros c) throws SQLException {
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         try {
@@ -110,4 +111,5 @@ public ArrayList<Cadastro> lerBanco() throws SQLException {
             Conexao.closeConnection(con, stmt);
         }
     }
+
 }

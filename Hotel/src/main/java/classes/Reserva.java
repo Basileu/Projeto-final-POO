@@ -68,12 +68,6 @@ public class Reserva {
         this.numQuarto = numQuarto;
     }
 
-
-
-
-
-
-
     public String getDataEntrada() {
         return dataEntrada;
     }

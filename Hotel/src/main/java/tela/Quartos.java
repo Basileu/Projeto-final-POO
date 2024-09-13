@@ -4,6 +4,10 @@
  */
 package tela;
 
+import DAO.QuartosDAO;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,6 +18,12 @@ import javax.swing.table.DefaultTableModel;
 public class Quartos extends javax.swing.JFrame {
 
     private Login login;
+    private Cadastro cadastro;
+
+    public Quartos(Cadastro cadastro) {
+        this.cadastro = cadastro;
+        initComponents();
+    }
 
     /**
      * Creates new form Reserva
@@ -23,8 +33,25 @@ public class Quartos extends javax.swing.JFrame {
         initComponents();
     }
 
-    public Quartos() {
+    public Quartos() throws SQLException {
         initComponents();
+        preencherTabela();
+    }
+
+    public void preencherTabela() throws SQLException {
+        DefaultTableModel modelo = (DefaultTableModel) tbQuartos.getModel();
+        modelo.setNumRows(0);
+        QuartosDAO qdao = new QuartosDAO();
+
+        for (classes.Quartos q : qdao.lerBanco()) {
+            modelo.addRow(new Object[]{
+                q.getNumQuartos(),
+                q.getDescricao(),
+                q.getStatus(),
+                q.getPreco(),
+                q.getData(),});
+        }
+
     }
 
     /**
@@ -40,7 +67,7 @@ public class Quartos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbReserva = new javax.swing.JTable();
+        tbQuartos = new javax.swing.JTable();
         jBReservar = new javax.swing.JButton();
         jBCancelar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -56,8 +83,8 @@ public class Quartos extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Nirmala UI", 1, 28)); // NOI18N
         jLabel1.setText("Quartos");
 
-        tbReserva.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tbReserva.setModel(new javax.swing.table.DefaultTableModel(
+        tbQuartos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tbQuartos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"100", "Quarto solteiro", "ocupado", "R$ 89,99", "-"},
                 {"101", "Quarto casal", "disponível", "R$ 139,99", "-"},
@@ -69,21 +96,22 @@ public class Quartos extends javax.swing.JFrame {
                 "Número do Quarto", "Descrição", "Status", "Valor por dia", "Data"
             }
         ));
-        tbReserva.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tbReserva.setFillsViewportHeight(true);
-        tbReserva.setMaximumSize(new java.awt.Dimension(2147483647, 150));
-        tbReserva.setName(""); // NOI18N
-        tbReserva.setRowHeight(30);
-        tbReserva.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tbReserva.setShowGrid(true);
-        tbReserva.setSurrendersFocusOnKeystroke(true);
-        tbReserva.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbQuartos.setColumnSelectionAllowed(true);
+        tbQuartos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tbQuartos.setFillsViewportHeight(true);
+        tbQuartos.setMaximumSize(new java.awt.Dimension(2147483647, 150));
+        tbQuartos.setName(""); // NOI18N
+        tbQuartos.setRowHeight(30);
+        tbQuartos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbQuartos.setShowGrid(true);
+        tbQuartos.setSurrendersFocusOnKeystroke(true);
+        tbQuartos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbReservaMouseClicked(evt);
+                tbQuartosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tbReserva);
-        tbReserva.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jScrollPane1.setViewportView(tbQuartos);
+        tbQuartos.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         jBReservar.setBackground(new java.awt.Color(153, 153, 255));
         jBReservar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -173,12 +201,12 @@ public class Quartos extends javax.swing.JFrame {
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         // TODO add your handling code here:
 
-        DefaultTableModel tbModel = (DefaultTableModel) tbReserva.getModel();
-        tbReserva.getSelectedRow();
+        DefaultTableModel tbModel = (DefaultTableModel) tbQuartos.getModel();
+        tbQuartos.getSelectedRow();
 
-        if (tbReserva.getSelectedRow() != -1 && tbReserva.getValueAt(tbReserva.getSelectedRow(), 2) != null) {
+        if (tbQuartos.getSelectedRow() != -1 && tbQuartos.getValueAt(tbQuartos.getSelectedRow(), 2) != null) {
 
-            tbReserva.setValueAt(null, tbReserva.getSelectedRow(), 2);
+            tbQuartos.setValueAt(null, tbQuartos.getSelectedRow(), 2);
             Cancelar frameCancelar = new Cancelar(Quartos.this);
             setVisible(false);
             frameCancelar.setVisible(true);
@@ -191,23 +219,23 @@ public class Quartos extends javax.swing.JFrame {
     private void jBReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReservarActionPerformed
         // TODO add your handling code here:
 
-        tbReserva.getSelectedRow();
-//        if (tbReserva.getSelectedRow() != -1 && tbReserva.getValueAt(tbReserva.getSelectedRow(), 2)== null) {
-//            tbReserva.setValueAt(jTData.getText(), tbReserva.getSelectedRow(), 2);
-//            Reserva framePagamento = new Reserva(Quartos.this);
-//            setVisible(false);
-//            framePagamento.setVisible(true);
-//        } else {
-//
-//            JOptionPane.showMessageDialog(null, "Selecione um quarto desocupado");
-//        }
+        tbQuartos.getSelectedRow();
+        if (tbQuartos.getSelectedRow() != -1 && tbQuartos.getValueAt(tbQuartos.getSelectedRow(), 2) == null) {
+//            tbQuartos.setValueAt(jTData.getText(), tbQuartos.getSelectedRow(), 5);
+            Reserva framePagamento = new Reserva(Quartos.this);
+            setVisible(false);
+            framePagamento.setVisible(true);
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Selecione um quarto desocupado");
+        }
 
     }//GEN-LAST:event_jBReservarActionPerformed
 
-    private void tbReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbReservaMouseClicked
+    private void tbQuartosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbQuartosMouseClicked
         // TODO add your handling code here:
-//        jTData.setText(tbReserva.getValueAt(tbReserva.getSelectedRow(), 2).toString());
-    }//GEN-LAST:event_tbReservaMouseClicked
+//        jTData.setText(tbQuartos.getValueAt(tbQuartos.getSelectedRow(), 2).toString());
+    }//GEN-LAST:event_tbQuartosMouseClicked
 
     /**
      * @param args the command line argumentst
@@ -240,7 +268,11 @@ public class Quartos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Quartos().setVisible(true);
+                try {
+                    new Quartos().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Quartos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
         });
@@ -255,6 +287,6 @@ public class Quartos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable tbReserva;
+    private javax.swing.JTable tbQuartos;
     // End of variables declaration//GEN-END:variables
 }

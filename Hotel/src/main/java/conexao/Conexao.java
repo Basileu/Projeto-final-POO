@@ -17,18 +17,19 @@ import java.util.logging.Logger;
  * @author kamil
  */
 public class Conexao {
-    
-        public static Connection getConnection() throws SQLException {
-        Connection conexao = null;
+
+    private static final String DATAPAH = "jdbc:sqlite:hotel.db";
+
+    public static Connection getConnection() {
+
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://127.0.0.1/hotel", "root", "@Kamila19");
-        } catch (ClassNotFoundException ex) {
-            System.out.println("Driver do banco não localizado");
+
+            return DriverManager.getConnection(DATAPAH);
+
         } catch (SQLException ex) {
-            System.out.println("Ocorreu um erro ao acessar ao banco: " + ex.getMessage());
+            System.out.println(ex);
         }
-        return conexao;
+        return null;
     }
 
     public static void closeConnection(Connection con) {
@@ -71,7 +72,7 @@ public class Conexao {
         } else {
             System.out.println("Falha ao estabelecer conexão.");
         }
-        
+
     }
 //
 //    public static Connection getConnection() throws SQLException {

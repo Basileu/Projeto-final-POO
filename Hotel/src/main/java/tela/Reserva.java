@@ -13,7 +13,7 @@ import javax.swing.SpinnerDateModel;
  * @author rafae
  */
 public class Reserva extends javax.swing.JFrame {
-   
+
     private Quartos reserva;
 
     /**
@@ -42,7 +42,7 @@ public class Reserva extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jBConfirmar = new javax.swing.JButton();
-        jTNome = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jBVoltar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -82,11 +82,11 @@ public class Reserva extends javax.swing.JFrame {
             }
         });
 
-        jTNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTNome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.gray, java.awt.Color.gray));
-        jTNome.addActionListener(new java.awt.event.ActionListener() {
+        txtNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.gray, java.awt.Color.gray));
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTNomeActionPerformed(evt);
+                txtNomeActionPerformed(evt);
             }
         });
 
@@ -110,6 +110,11 @@ public class Reserva extends javax.swing.JFrame {
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Quarto 100", "Quarto 101", "Quarto 200", "Quarto 201", "Quarto 300" }));
         jComboBox1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.gray, java.awt.Color.gray));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         buttonGroup2.add(jRTipoCartao);
         jRTipoCartao.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -200,7 +205,7 @@ public class Reserva extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel6)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTNome, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -249,7 +254,7 @@ public class Reserva extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,14 +307,6 @@ public class Reserva extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConfirmarActionPerformed
-        // TODO add your handling code here:
-//        if (jTNome.getText().isEmpty() || jTNum.getText().isEmpty() || jTCartao.getText().isEmpty() || (!jRTipoCartao.isSelected() && !jRCartaoDebito.isSelected())) {
-//
-//            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
-//        } else {
-//            dispose();
-//            reserva.setVisible(true);
-//        }
 
     }//GEN-LAST:event_jBConfirmarActionPerformed
 
@@ -318,9 +315,9 @@ public class Reserva extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jRTipoCartaoActionPerformed
 
-    private void jTNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTNomeActionPerformed
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTNomeActionPerformed
+    }//GEN-LAST:event_txtNomeActionPerformed
 
     private void jTCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCartaoActionPerformed
         // TODO add your handling code here:
@@ -350,6 +347,10 @@ public class Reserva extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_jRCartaoDebitoActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -415,6 +416,6 @@ public class Reserva extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTextField jTCartao;
     private javax.swing.JTextField jTCartao1;
-    private javax.swing.JTextField jTNome;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

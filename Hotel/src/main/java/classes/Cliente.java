@@ -6,24 +6,33 @@ package classes;
 
 /**
  *
- * @author kamil
+ * @author 13493382650
  */
-public class Cadastro {
-
+public abstract class Cliente {
+    
     private int clienteID;
     private String nome;
-    private String email;
-    private String senha;
+    private String email;   
     private String telefone;
 
-    public Cadastro(String nome, String email, String senha, String telefone) {
+    public Cliente(int clienteID, String nome, String email, String telefone) {
+        this.clienteID = clienteID;
         this.nome = nome;
         this.email = email;
-        this.senha = senha;
         this.telefone = telefone;
     }
 
-    public Cadastro() {
+    public Cliente() {
+    }
+    
+    
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public int getClienteID() {
@@ -50,25 +59,9 @@ public class Cadastro {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
     @Override
     public String toString() {
-        return "Cadastro{" + "clienteID=" + clienteID + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", telefone=" + telefone + '}';
+        return "Cliente{" + "telefone=" + telefone + ", clienteID=" + clienteID + ", nome=" + nome + ", email=" + email + '}';
     }
     
     
