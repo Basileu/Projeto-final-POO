@@ -35,6 +35,12 @@ public class Cancela extends javax.swing.JFrame {
     public Cancela(Reserva reservas) {
         this.reservas = reservas;
         initComponents();
+
+        try {
+            preencherTabela();  // Preenche a tabela após inicializar os componentes
+        } catch (SQLException e) {
+            e.printStackTrace();  // Tratamento básico de erro
+        }
     }
 
     public Cancela() throws SQLException {
@@ -51,10 +57,9 @@ public class Cancela extends javax.swing.JFrame {
             modelo.addRow(new Object[]{
                 r.getNome(),
                 r.getNumQuarto(),});
-            }
-
         }
 
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -188,20 +193,34 @@ public class Cancela extends javax.swing.JFrame {
 
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         // TODO add your handling code here:
+        // Verifica se uma linha está selecionada
         DefaultTableModel tbModel = (DefaultTableModel) tbCancelar.getModel();
-        tbCancelar.getSelectedRow();
+        
+        if (tbCancelar.getSelectedRow() != -1) {
+            // Supondo que as colunas estejam corretamente mapeadas
+            int selectedRow = tbCancelar.getSelectedRow();
+            String nome = tbCancelar.getValueAt(selectedRow, 0).toString(); // E-mail
+            String numQuarto = tbCancelar.getValueAt(selectedRow, 1).toString(); // Senha
 
-        if (tbCancelar.getSelectedRow() != -1 && tbCancelar.getValueAt(tbCancelar.getSelectedRow(), 2) != null) {
+            // Cria uma nova instância de Cancelar
+            Cancelar cancelar = new Cancelar();
+            cancelar.setNumQuarto(numQuarto);
+            cancelar.setNome(nome);
 
-            tbCancelar.setValueAt(null, tbCancelar.getSelectedRow(), 2);
-            Cancela frameQuartos = new Cancela(quartos);
-            setVisible(false);
-            frameQuartos.setVisible(true);
+            // Cancela a reserva
+            CancelarDAO cancelarDAO = new CancelarDAO();
+            try {
+                cancelarDAO.cancelarReserva(cancelar);
+                // Atualiza a tabela
+                tbModel.removeRow(selectedRow); // Remove a reserva da tabela
+                JOptionPane.showMessageDialog(null, "Reserva cancelada com sucesso!");
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erro ao cancelar reserva: " + e.getMessage());
+            }
         } else {
-
-            JOptionPane.showMessageDialog(null, "Selecione o quarto reservado");
+            JOptionPane.showMessageDialog(null, "Selecione o quarto reservado.");
         }
-    
+
     }//GEN-LAST:event_jBCancelarActionPerformed
 
     /**
@@ -248,7 +267,7 @@ public class Cancela extends javax.swing.JFrame {
                 }
             }
         });
-}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCancelar;

@@ -257,9 +257,9 @@ public class Reserva extends javax.swing.JFrame {
         reserva.setCvv(txtCvv.getText()); // Obtém o CVV
         System.out.println(reserva.toString());
 
-//        if (txtNome.getText().isEmpty() || sNumQuarto.getSelectedIndex() == 0 || jRTipoCartao.getSelectedIndex() == 0 || txtNumCartao.getText().isEmpty() || txtCvv.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
-//        } else {
+        if (txtNome.getText().isEmpty() || sNumQuarto.getSelectedIndex() == 0 || jRTipoCartao.getSelectedIndex() == 0 || txtNumCartao.getText().isEmpty() || txtCvv.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+        } else {
 
 // Inserir a reserva no banco de dados
             ReservaDAO reservaDAO = new ReservaDAO();
@@ -276,9 +276,9 @@ public class Reserva extends javax.swing.JFrame {
             txtNumCartao.setText("");
             txtCvv.setText("");
 
-//            dispose();
-//            quartos.setVisible(true);
-        //}
+            dispose();
+            quartos.setVisible(true);
+        }
     }//GEN-LAST:event_jBConfirmarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed

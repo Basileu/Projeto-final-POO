@@ -23,10 +23,9 @@ public class CancelarDAO implements cancelamento{
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("DELETE FROM tb_reservas WHERE quarto_id = ? AND cliente_email = ? AND senha = ?");
-            stmt.setInt(1, cancelar.getNumQuarto());
-            stmt.setString(2, cancelar.getEmail());
-            stmt.setString(3, cancelar.getSenha());
+            stmt = con.prepareStatement("DELETE FROM tb_reservas WHERE numero_quartos = ? AND nome = ?");
+            stmt.setString(1, cancelar.getNumQuarto());
+            stmt.setString(2, cancelar.getNome());
 
             int rowsAffected = stmt.executeUpdate();
 

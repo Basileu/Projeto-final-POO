@@ -141,10 +141,7 @@ public class Cadastro extends javax.swing.JFrame {
                     .addComponent(txtEmail)
                     .addComponent(txtNome)
                     .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                    .addComponent(txtTelefone)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, telaCadastroLayout.createSequentialGroup()
-                        .addComponent(jBCadastrar)
-                        .addGap(67, 67, 67)))
+                    .addComponent(txtTelefone))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, telaCadastroLayout.createSequentialGroup()
                 .addContainerGap(161, Short.MAX_VALUE)
@@ -157,7 +154,10 @@ public class Cadastro extends javax.swing.JFrame {
                         .addGap(202, 202, 202))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, telaCadastroLayout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(353, 353, 353))))
+                        .addGap(353, 353, 353))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, telaCadastroLayout.createSequentialGroup()
+                        .addComponent(jBCadastrar)
+                        .addGap(323, 323, 323))))
         );
         telaCadastroLayout.setVerticalGroup(
             telaCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,9 +184,9 @@ public class Cadastro extends javax.swing.JFrame {
                 .addGroup(telaCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(37, 37, 37)
+                .addGap(36, 36, 36)
                 .addComponent(jBCadastrar)
-                .addGap(29, 29, 29))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,7 +223,7 @@ public class Cadastro extends javax.swing.JFrame {
             quarto.setVisible(true);
             dispose();
 
-        }
+        
 
         CadastroDAO cadastroDAo = new CadastroDAO();
 
@@ -237,7 +237,7 @@ public class Cadastro extends javax.swing.JFrame {
         txtEmail.setText("");
         txtSenha.setText("");
         txtTelefone.setText("");
-
+    }
 
     }//GEN-LAST:event_jBCadastrarActionPerformed
 

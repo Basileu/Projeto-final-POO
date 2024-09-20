@@ -26,7 +26,7 @@ public final class Quarto extends javax.swing.JFrame {
         this.reserva = reserva;
         initComponents();
         preencherTabela();
-        
+
     }
 
     public Quarto(Cadastro cadastro) {
@@ -209,12 +209,11 @@ public final class Quarto extends javax.swing.JFrame {
 
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         // TODO add your handling code here:
-        
-            Cancela frameCancelar = new Cancela(Quarto.this);
-            
-            setVisible(false);
-            frameCancelar.setVisible(true);
-            
+
+        Cancela frameCancelar = new Cancela(this.reserva);
+        setVisible(false);
+        frameCancelar.setVisible(true);
+
     }//GEN-LAST:event_jBCancelarActionPerformed
 
     private void jBReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReservarActionPerformed

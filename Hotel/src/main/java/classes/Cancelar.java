@@ -16,11 +16,11 @@ public class Cancelar {
 
     private String nome;
     private String email;
-    private int numQuarto;
+    private String numQuarto;
     private String senha;
 
     // Construtor
-    public Cancelar(String nome, String email, int numQuarto, String senha) {
+    public Cancelar(String nome, String email, String numQuarto, String senha) {
         this.nome = nome;
         this.email = email;
         this.numQuarto = numQuarto;
@@ -46,11 +46,11 @@ public class Cancelar {
         this.email = email;
     }
 
-    public int getNumQuarto() {
+    public String getNumQuarto() {
         return numQuarto;
     }
 
-    public void setNumQuarto(int numQuarto) {
+    public void setNumQuarto(String numQuarto) {
         this.numQuarto = numQuarto;
     }
 
