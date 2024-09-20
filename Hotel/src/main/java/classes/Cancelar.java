@@ -26,6 +26,8 @@ public class Cancelar {
         this.numQuarto = numQuarto;
         this.senha = senha;
     }
+    
+    public Cancelar(){}
 
     // Getters e Setters
     public String getNome() {

@@ -18,8 +18,8 @@ import java.sql.SQLException;
  */
 public class CancelarDAO implements cancelamento{
 
-    @Override
-    public void cancelarReserva(Cancelar cancelar){
+   @Override
+    public void cancelarReserva(Cancelar cancelar) throws SQLException {
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         try {

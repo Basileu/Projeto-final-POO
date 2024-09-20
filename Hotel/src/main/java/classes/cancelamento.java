@@ -4,11 +4,13 @@
  */
 package classes;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author 13493382650
  */
 public interface cancelamento {
-   void cancelarReserva(Cancelar cancelar);
+   void cancelarReserva(Cancelar cancelar)throws SQLException;
 }
 

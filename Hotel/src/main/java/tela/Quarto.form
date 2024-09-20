@@ -64,7 +64,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="397" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="393" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="355" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -141,32 +141,32 @@
                       <Data value="300"/>
                     </Column>
                     <Column editable="true" title="Descri&#xe7;&#xe3;o" type="java.lang.Object">
-                      <Data value="Quarto solteiro"/>
+                      <Data value="Quarto Solterio "/>
                       <Data value="Quarto casal"/>
                       <Data value="Quarto vip solteiro"/>
                       <Data value="Quarto vip casal"/>
                       <Data value="Cobertura vip"/>
                     </Column>
                     <Column editable="true" title="Status" type="java.lang.Object">
-                      <Data value="ocupado"/>
-                      <Data value="dispon&#xed;vel"/>
-                      <Data value="dispon&#xed;vel"/>
-                      <Data value="dispon&#xed;vel"/>
-                      <Data value="dispon&#xed;vel"/>
+                      <Data value="dispon&#xed;vel "/>
+                      <Data value="dispon&#xed;vel "/>
+                      <Data value="dispon&#xed;vel "/>
+                      <Data value="dispon&#xed;vel "/>
+                      <Data value="dispon&#xed;vel "/>
                     </Column>
                     <Column editable="true" title="Valor por dia" type="java.lang.Object">
-                      <Data value="R$ 89,99"/>
-                      <Data value="R$ 139,99"/>
-                      <Data value="R$ 109,99"/>
-                      <Data value="R$ 209,99"/>
-                      <Data value="R$ 900,00"/>
+                      <Data value="R$ 89.99"/>
+                      <Data value="R$ 139.99"/>
+                      <Data value="R$ 109.99"/>
+                      <Data value="R$ 209.99"/>
+                      <Data value="R$ 900.00"/>
                     </Column>
                     <Column editable="true" title="Data" type="java.lang.Object">
-                      <Data value="-"/>
-                      <Data value="-"/>
-                      <Data value="-"/>
-                      <Data value="-"/>
-                      <Data value="-"/>
+                      <Data value="13/10/24-16/10/24"/>
+                      <Data value="02/10/24-15/10/24"/>
+                      <Data value="1/10/24-14/10/24"/>
+                      <Data value="10/10/24-13/10/24"/>
+                      <Data value="09/10/24-12/10/24"/>
                     </Column>
                   </Table>
                 </Property>

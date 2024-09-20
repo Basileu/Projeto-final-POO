@@ -13,11 +13,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 /**
  *
  * @author kamil
  */
+
 public class CadastroDAO {
 
 public ArrayList<Cadastros> lerBanco() throws SQLException {
@@ -52,26 +52,43 @@ public ArrayList<Cadastros> lerBanco() throws SQLException {
         return cadastroList;
     }
     
-    public void inserirBanco(Cadastros c) throws SQLException {
-        Connection con = Conexao.getConnection();
-        PreparedStatement stmt = null;
-        try {
-            stmt = con.prepareStatement("INSERT INTO tb_cadastro (nome, email, senha, telefone) VALUES (?, ?, ?, ?)");
+public int inserirBanco(Cadastros c) throws SQLException {
+    Connection con = Conexao.getConnection();
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+    int clienteID = -1; // Inicializa o clienteID como -1 para indicar erro, se necessário
+    
+    try {
+        // Preparar a declaração para inserção e solicitar a geração de chaves
+        stmt = con.prepareStatement(
+            "INSERT INTO tb_cadastro (nome, email, senha, telefone) VALUES (?, ?, ?, ?)",
+            PreparedStatement.RETURN_GENERATED_KEYS);
+        
+        // Definir os parâmetros da declaração
+        stmt.setString(1, c.getNome());
+        stmt.setString(2, c.getEmail());
+        stmt.setString(3, c.getSenha());
+        stmt.setString(4, c.getTelefone());
 
-            stmt.setString(1, c.getNome());
-            stmt.setString(2, c.getEmail());
-            stmt.setString(3, c.getSenha());
-            stmt.setString(4, c.getTelefone());
-
-            stmt.executeUpdate();
-
-            System.out.println("Cliente inserido com sucesso!");
-        } catch (SQLException ex) {
-            System.out.println("Erro ao inserir na tabela tb_cadastro: " + ex.getMessage());
-        } finally {
-            Conexao.closeConnection(con, stmt);
+        // Executar a atualização e obter o número de linhas afetadas
+        int affectedRows = stmt.executeUpdate();
+        
+        if (affectedRows > 0) {
+            // Recuperar as chaves geradas (IDs)
+            rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                clienteID = rs.getInt(1); // Obter o ID gerado
+                c.setClienteID(clienteID); // Definir o ID gerado no objeto
+            }
         }
+    } catch (SQLException ex) {
+        System.out.println("Erro ao inserir na tabela tb_cadastro: " + ex.getMessage());
+    } finally {
+        Conexao.closeConnection(con, stmt, rs);
     }
+    
+    return clienteID; // Retornar o ID gerado
+}
     
      public void atualizarCadastro(Cadastros c) throws SQLException {
         Connection con = Conexao.getConnection();

@@ -29,6 +29,10 @@ public class Quartos {
     public Quartos() {
     }
 
+    public Quartos(int numero, boolean disponivel) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public int getQuartosID() {
         return quartosID;
     }

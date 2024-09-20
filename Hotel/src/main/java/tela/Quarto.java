@@ -5,6 +5,7 @@
 package tela;
 
 import DAO.QuartosDAO;
+import classes.Quartos;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,12 +16,20 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author rafae
  */
-public class Quartos extends javax.swing.JFrame {
+public final class Quarto extends javax.swing.JFrame {
 
     private Login login;
     private Cadastro cadastro;
+    private Reserva reserva;
 
-    public Quartos(Cadastro cadastro) {
+    public Quarto(Reserva reserva) throws SQLException {
+        this.reserva = reserva;
+        initComponents();
+        preencherTabela();
+        
+    }
+
+    public Quarto(Cadastro cadastro) {
         this.cadastro = cadastro;
         initComponents();
     }
@@ -28,12 +37,12 @@ public class Quartos extends javax.swing.JFrame {
     /**
      * Creates new form Reserva
      */
-    public Quartos(Login login) {
+    public Quarto(Login login) {
         this.login = login;
         initComponents();
     }
 
-    public Quartos() throws SQLException {
+    public Quarto() throws SQLException {
         initComponents();
         preencherTabela();
     }
@@ -43,7 +52,7 @@ public class Quartos extends javax.swing.JFrame {
         modelo.setNumRows(0);
         QuartosDAO qdao = new QuartosDAO();
 
-        for (classes.Quartos q : qdao.lerBanco()) {
+        for (Quartos q : qdao.lerBanco()) {
             modelo.addRow(new Object[]{
                 q.getNumQuartos(),
                 q.getDescricao(),
@@ -86,11 +95,11 @@ public class Quartos extends javax.swing.JFrame {
         tbQuartos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tbQuartos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"100", "Quarto solteiro", "ocupado", "R$ 89,99", "-"},
-                {"101", "Quarto casal", "disponível", "R$ 139,99", "-"},
-                {"200", "Quarto vip solteiro", "disponível", "R$ 109,99", "-"},
-                {"201", "Quarto vip casal", "disponível", "R$ 209,99", "-"},
-                {"300", "Cobertura vip", "disponível", "R$ 900,00", "-"}
+                {"100", "Quarto Solterio ", "disponível ", "R$ 89.99", "13/10/24-16/10/24"},
+                {"101", "Quarto casal", "disponível ", "R$ 139.99", "02/10/24-15/10/24"},
+                {"200", "Quarto vip solteiro", "disponível ", "R$ 109.99", "1/10/24-14/10/24"},
+                {"201", "Quarto vip casal", "disponível ", "R$ 209.99", "10/10/24-13/10/24"},
+                {"300", "Cobertura vip", "disponível ", "R$ 900.00", "09/10/24-12/10/24"}
             },
             new String [] {
                 "Número do Quarto", "Descrição", "Status", "Valor por dia", "Data"
@@ -149,7 +158,7 @@ public class Quartos extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(397, 397, 397)
                         .addComponent(jLabel1)
-                        .addGap(0, 393, Short.MAX_VALUE)))
+                        .addGap(0, 355, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -200,41 +209,27 @@ public class Quartos extends javax.swing.JFrame {
 
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         // TODO add your handling code here:
-
-        DefaultTableModel tbModel = (DefaultTableModel) tbQuartos.getModel();
-        tbQuartos.getSelectedRow();
-
-        if (tbQuartos.getSelectedRow() != -1 && tbQuartos.getValueAt(tbQuartos.getSelectedRow(), 2) != null) {
-
-            tbQuartos.setValueAt(null, tbQuartos.getSelectedRow(), 2);
-            Cancelar frameCancelar = new Cancelar(Quartos.this);
+        
+            Cancela frameCancelar = new Cancela(Quarto.this);
+            
             setVisible(false);
             frameCancelar.setVisible(true);
-        } else {
-
-            JOptionPane.showMessageDialog(null, "Selecione o quarto reservado");
-        }
+            
     }//GEN-LAST:event_jBCancelarActionPerformed
 
     private void jBReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReservarActionPerformed
         // TODO add your handling code here:
 
         tbQuartos.getSelectedRow();
-        if (tbQuartos.getSelectedRow() != -1 && tbQuartos.getValueAt(tbQuartos.getSelectedRow(), 2) == null) {
-//            tbQuartos.setValueAt(jTData.getText(), tbQuartos.getSelectedRow(), 5);
-            Reserva framePagamento = new Reserva(Quartos.this);
-            setVisible(false);
-            framePagamento.setVisible(true);
-        } else {
+        Reserva reserva = new Reserva(this);
+        setVisible(false);
+        reserva.setVisible(true);
 
-            JOptionPane.showMessageDialog(null, "Selecione um quarto desocupado");
-        }
 
     }//GEN-LAST:event_jBReservarActionPerformed
 
     private void tbQuartosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbQuartosMouseClicked
-        // TODO add your handling code here:
-//        jTData.setText(tbQuartos.getValueAt(tbQuartos.getSelectedRow(), 2).toString());
+
     }//GEN-LAST:event_tbQuartosMouseClicked
 
     /**
@@ -254,24 +249,27 @@ public class Quartos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Quartos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Quarto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Quartos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Quarto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Quartos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Quarto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Quartos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Quarto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 try {
-                    new Quartos().setVisible(true);
+                    new Quarto().setVisible(true);
                 } catch (SQLException ex) {
-                    Logger.getLogger(Quartos.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Quarto.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 

@@ -4,7 +4,7 @@
  */
 package DAO;
 
-import classes.Reserva;
+import classes.Reservas;
 import conexao.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -40,7 +40,7 @@ public class QuartosDAO {
             while (rs.next()) {
                 Quartos quarto = new Quartos();
                 quarto.setQuartosID(rs.getInt("quartos_id"));
-                quarto.setNumQuartos(rs.getInt("numero_quarto"));
+                quarto.setNumQuartos(rs.getInt("numero_quartos"));
                 quarto.setDescricao(rs.getString("descricao"));
                 quarto.setStatus(rs.getString("status"));
                 quarto.setPreco(rs.getDouble("valor_por_dia"));
@@ -60,7 +60,7 @@ public class QuartosDAO {
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO tb_quartos (numero_quarto, descricao, status, valor_por_dia, data_disponibilidade, cliente_id) VALUES (?, ?, ?, ?, ?, ?)");
+            stmt = con.prepareStatement("INSERT INTO tb_quartos (numero_quartos, descricao, status, valor_por_dia, data_disponibilidade, cliente_id) VALUES (?, ?, ?, ?, ?, ?)");
 
             stmt.setInt(1, q.getNumQuartos());
             stmt.setString(2, q.getDescricao());
@@ -83,7 +83,7 @@ public class QuartosDAO {
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("UPDATE tb_quartos SET numero_quarto = ?, descricao = ?, status = ?, valor_por_dia = ?, data_disponibilidade = ? WHERE quartos_id = ?");
+            stmt = con.prepareStatement("UPDATE tb_quartos SET numero_quartos = ?, descricao = ?, status = ?, valor_por_dia = ?, data_disponibilidade = ? WHERE quartos_id = ?");
 
             stmt.setInt(1, q.getNumQuartos());
             stmt.setString(2, q.getDescricao());
@@ -118,10 +118,12 @@ public class QuartosDAO {
             Conexao.closeConnection(con, stmt);
         }
     }
-//    public static void main(String[] args) throws SQLException {
+    //public static void main(String[] args) throws SQLException {
 //        ReservaDAO reservaDAO = new ReservaDAO();
 //        reservaDAO.lerBanco();
-//    }
+
+
+ //  }
 
     
 }

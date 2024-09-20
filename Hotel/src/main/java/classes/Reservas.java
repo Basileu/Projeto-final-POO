@@ -8,41 +8,28 @@ package classes;
  *
  * @author kamil
  */
-public class Reserva {
+public class Reservas {
     private int reservaID;
-    private int numQuarto;
     private String nome;
-    private String dataEntrada ;
-    private String dataSaida ;
+    private String numQuarto;
     private String formaPagamento;
     private String numeroCartao;
     private String cvv;
-    private boolean statusConfirmacao;
 
-    public Reserva(String nome, int reservaID, int numQuarto, String dataEntrada, String dataSaida, String formaPagamento, String numeroCartao, String cvv) {
-        this.nome = nome;
+    public Reservas(int reservaID, String nome, String numQuarto, String formaPagamento, String numeroCartao, String cvv) {
         this.reservaID = reservaID;
+        this.nome = nome;
         this.numQuarto = numQuarto;
-        this.dataEntrada = dataEntrada;
-        this.dataSaida = dataSaida;
         this.formaPagamento = formaPagamento;
         this.numeroCartao = numeroCartao;
         this.cvv = cvv;
     }
 
-    public Reserva() {
+    
+    public Reservas() {
         
     }
 
-    public boolean isStatusConfirmacao() {
-        return statusConfirmacao;
-    }
-
-    public void setStatusConfirmacao(boolean statusConfirmacao) {
-        this.statusConfirmacao = statusConfirmacao;
-    }
-
-    
     public int getReservaID() {
         return reservaID;
     }
@@ -50,8 +37,7 @@ public class Reserva {
     public void setReservaID(int reservaID) {
         this.reservaID = reservaID;
     }
-    
-    
+
     public String getNome() {
         return nome;
     }
@@ -60,28 +46,12 @@ public class Reserva {
         this.nome = nome;
     }
 
-    public int getNumQuarto() {
+    public String getNumQuarto() {
         return numQuarto;
     }
 
-    public void setNumQuarto(int numQuarto) {
+    public void setNumQuarto(String numQuarto) {
         this.numQuarto = numQuarto;
-    }
-
-    public String getDataEntrada() {
-        return dataEntrada;
-    }
-
-    public void setDataEntrada(String dataEntrada) {
-        this.dataEntrada = dataEntrada;
-    }
-
-    public String getDataSaida() {
-        return dataSaida;
-    }
-
-    public void setDataSaida(String dataSaida) {
-        this.dataSaida = dataSaida;
     }
 
     public String getFormaPagamento() {
@@ -106,12 +76,12 @@ public class Reserva {
 
     public void setCvv(String cvv) {
         this.cvv = cvv;
-    }   
+    }
 
     @Override
     public String toString() {
-        return "Reserva{" + "reservaID=" + reservaID + ", nQuarto=" + numQuarto + ", nome=" + nome + ", dataEntrada=" + dataEntrada + ", dataSaida=" + dataSaida + ", formaPagamento=" + formaPagamento + ", numeroCartao=" + numeroCartao + ", cvv=" + cvv + ", statusConfirmacao=" + statusConfirmacao + '}';
+        return "Reservas{" + "reservaID=" + reservaID + ", nome=" + nome + ", numQuarto=" + numQuarto + ", formaPagamento=" + formaPagamento + ", numeroCartao=" + numeroCartao + ", cvv=" + cvv + '}';
     }
 
-    
+ 
 }
