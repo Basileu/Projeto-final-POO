@@ -5,6 +5,9 @@ Alunos participantes: João Pedro, Rafael Nunes e Kamila Braga <br>
 diagrama de classe: <br>
 
 ![WhatsApp Image 2024-09-19 at 21 35 21](https://github.com/user-attachments/assets/d7a9c302-5995-4f1e-983f-4b365e576111);
+<br>Modelo ER <br> 
+![Captura de tela 2024-09-20 110713](https://github.com/user-attachments/assets/146902b5-acaf-4263-9152-d2b9ea80e091)
+
 <br> tela inicial: <br>
 ![WhatsApp Image 2024-09-20 at 10 02 41](https://github.com/user-attachments/assets/efce0696-22bd-4067-8716-b974779c64b8)
 <br> tela cadastro: <br>
